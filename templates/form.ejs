@@ -3,11 +3,11 @@
     <title>Working...</title>
 </head>
 <body>
-    <form method="post" name="hiddenform" action="<%= callback %>">
-        <input type="hidden" 
-               name="<%= type %>" 
-               value="<%= token %>">
+    <form method="post" name="hiddenform" action="<%= callback %>" autocomplete="off">
+        <input type="hidden" name="<%= type %>" value="<%= token %>">
+        <% if (RelayState){ %>
         <input type="hidden" name="RelayState" value="<%= RelayState %>">
+        <%}%>
         <noscript>
             <p>
                 Script is disabled. Click Submit to continue.
@@ -15,7 +15,7 @@
         </noscript>
     </form>
     <script language="javascript" type="text/javascript">
-        window.setTimeout(function(){document.forms[0].submit()}, 0);
+        document.forms[0].submit();
     </script>
 </body>
 </html>
